@@ -25,3 +25,6 @@ def load_images():
     print "shape of labels: "
     print np.shape(all_labels)
 
+
+if __name__ == "__main__":
+    load_images()
