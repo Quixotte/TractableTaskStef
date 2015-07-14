@@ -17,7 +17,7 @@ def load_images():
         temp_arr = line.split(" ")
         image = caffe.io.load_image(data_path + temp_arr[0])
         all_images = np.concatenate((all_images, image), axis=0)
-        labels = [i for l in temp_arr[1:] where i = int(l)]
+        labels = [int(l) for l in temp_arr[1:]]
         all_labels.concatenate((all_labels, labels), axis=0)
 
     print "shape of data: "
