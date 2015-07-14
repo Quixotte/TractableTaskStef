@@ -2,9 +2,8 @@ __author__ = 'stefjanssen'
 
 import caffe
 import numpy as np
+import os
 data_path = "../../Nus-wide/1k/"
-
-image = caffe.io.load_image("")
 
 image_width = 240
 image_height = 218
@@ -16,7 +15,7 @@ def load_images():
     for line in file:
         temp_arr = line.split(" ")
         print temp_arr
-        if temp_arr[0] != "":
+        if os.path.exists(data_path + temp_arr[0]):
             image = caffe.io.load_image(data_path + temp_arr[0])
             all_images = np.concatenate((all_images, image), axis=0)
             labels = [int(l) for l in temp_arr[1:]]
