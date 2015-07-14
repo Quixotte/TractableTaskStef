@@ -2,7 +2,7 @@ __author__ = 'stefjanssen'
 
 import caffe
 import numpy as np
-data_path = "../../Nus-wide/1k"
+data_path = "../../Nus-wide/1k/"
 
 image = caffe.io.load_image("")
 
@@ -15,10 +15,12 @@ def load_images():
     all_labels = np.asarray([])
     for line in file:
         temp_arr = line.split(" ")
-        image = caffe.io.load_image(data_path + temp_arr[0])
-        all_images = np.concatenate((all_images, image), axis=0)
-        labels = [int(l) for l in temp_arr[1:]]
-        all_labels.concatenate((all_labels, labels), axis=0)
+        print temp_arr
+        if temp_arr[0] != "":
+            image = caffe.io.load_image(data_path + temp_arr[0])
+            all_images = np.concatenate((all_images, image), axis=0)
+            labels = [int(l) for l in temp_arr[1:]]
+            all_labels.concatenate((all_labels, labels), axis=0)
 
     print "shape of data: "
     print np.shape(all_images)
